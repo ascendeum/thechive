@@ -45,6 +45,28 @@
     </div>
 
     <script type="text/javascript">
+        /* On Slot Rendered Event */
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+        googletag.cmd.push(function() {
+            googletag.pubads().addEventListener("slotRenderEnded", function(e) {
+                // Check if this is the adunit you want
+                if(e.slot.getAdUnitPath() == "/1006418/theCHIVE_300x250_Instream_HP"){
+                    console.log('Adunit Rendered',e.slot.getAdUnitPath());
+                    if(!e.isEmpty){
+                        console.log('Response is not empty, execute your code');
+                        // Get the element of the adunit
+                        let adEl = document.getElementById(e.slot.getSlotElementId());
+                        if(adEl){
+                            // Execute the code you want on the element
+                        }
+                    } else {
+                        console.log('Is empty');
+                    }
+                }
+                
+            });
+        });
     /* Simple Infinite scroll generator */
        var setEventListener = function(el, ev, fn) {
           var eventMethod = window.addEventListener ? 'addEventListener' : 'attachEvent',
